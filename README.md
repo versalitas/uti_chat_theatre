@@ -7,16 +7,16 @@ Clone project from github.
 
 Install node modules
 
-,,,
+´´´
 npm install
-,,,
+´´´
 
 Change ip setting in public/src/settings.js
 to the ip of your computer.
 
 Currently this project runs locally.
 
-##TODO
+## TODO
 
 Convert into a web page.
 
