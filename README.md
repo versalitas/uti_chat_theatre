@@ -7,9 +7,10 @@ Clone project from github.
 
 Install node modules
 
-´´´
+,,,
 npm install
-´´´
+,,,
+
 Change ip setting in public/src/settings.js
 to the ip of your computer.
 
