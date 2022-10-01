@@ -5,11 +5,15 @@ Theatrical chat made with node.js, react and sockets.io
 
 Clone project from github.
 
+```
+ git clone [url project]
+```
+
 Install node modules
 
-´´´
-npm install
-´´´
+  ```
+  npm install
+  ```
 
 Change ip setting in public/src/settings.js
 to the ip of your computer.
