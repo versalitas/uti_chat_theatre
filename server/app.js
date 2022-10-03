@@ -16,7 +16,8 @@ const server = require('http').createServer(app);
 
 //TODO old version is better?
 // Setup websockets
-//var io = require('socket.io')({ port:8001,wsEngine: 'ws' });//8081
+//var io = require('socket.io')({ port:8001,wsEngine: 'ws' });
+
 
 //socket server
 const {Server} = require('socket.io');
@@ -29,6 +30,7 @@ const io = new Server(server, {
         origin: '*',
      }
     });
+  
 
 
 // Tell the app to look for static files in these directories
@@ -58,6 +60,8 @@ server.listen(PORT, () => {
 console.log(`Server running on ${PORT}`); 
 });
 
+
+
 var objTheaterPlay;
 fs.readFile('../guion_CAT.json', 'utf8', function (err, data) {
   if (err) throw err;
@@ -81,23 +85,26 @@ var blockNewMessages = false;
 var csvSounds = [];
 var totalSampleAudios = 70;
 
-
+//TODO to be erased?
+/*
 // Setup message cue
 var timer = setInterval(function(){
   if(messageCue.length>0){
     for(var i=0;i<messageCue.length;i++){
       var currentTime = 0;
       if(messageCue.timeToSend< currentTime){
-        /*
-        socket.broadcast.emit('newMessage',
-        {
-          'message':data
-        });
-        */
+       
+        //socket.broadcast.emit('newMessage',
+        //{
+        //  'message':data
+       // });
+        
       }
     }
   }
 },1000);
+
+*/
 
 function countMessage(socket){
   messageSceneCounter +=1;
@@ -142,9 +149,7 @@ function sendSceneInformation(socket){
   socket.emit('sceneInfo', data);
 }
 
-function rebootWifi(){
 
-}
 
 function sendUsers(socket){
   socket.broadcast.emit('newUserList',rolesAr);
@@ -230,11 +235,7 @@ function changeScene(socket){
     }
   },5000);
 }
-/*
-setTimeout(function(){
-  resetScene(socket);
-},2000);
-*/
+
 io.on('connection', function (socket) {
   var me = {
         id:         uuid.v4(),
@@ -263,7 +264,7 @@ io.on('connection', function (socket) {
     sendSceneInformation(socket);
   });
 
-  // Activate and disactivated
+  // Activate and desactivate
   socket.on('roleAdmin', function (data) {
     try{
       console.log('call role Admin :',rolesAr[data.index].activated);
@@ -308,7 +309,7 @@ io.on('connection', function (socket) {
         allMessages.push(message);
         // Save message
         countMessage(socket);
-        saveMessage(role+" : "+data);
+        saveMessage(role + " : "+data);
       }
     }
     // Send that all role are assigned
@@ -358,5 +359,9 @@ io.on('connection', function (socket) {
   });
 });
 
-//io.listen(8001);
+io.listen(8001);
 loadCSV('../audios/CLAIR_DE_LUNE_TIEMPOS004_reduce.csv');
+// Start header chat --- differentiates inbetween different shows
+saveMessage('======================================================================');
+saveMessage("Uti-et-abuti - "+new Date().toString());
+saveMessage('======================================================================');
