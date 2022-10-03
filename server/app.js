@@ -1,47 +1,65 @@
-const express = require('express');
-const uuid = require('node-uuid');
-const fs = require('fs');
-const parse = require('csv-parse');
+
+require('dotenv').config();
+const cors = require('cors');
+const routes = require('./routes/routes.js')
+const {parse} = require('csv-parse');
 var path = require('path');
 
+//collect id from users
+const uuid = require('uuid');
+const fs = require('fs');
+
+//server
+const express = require('express');
 const app = express();
-var server = require('http').createServer(app);
+const server = require('http').createServer(app);
+
+//TODO old version is better?
+// Setup websockets
+//var io = require('socket.io')({ port:8001,wsEngine: 'ws' });//8081
+
+//socket server
+const {Server} = require('socket.io');
+
+//const FRONT_END_URL = process.env.FRONT_END_URL;
+
+//TODO use  * ?
+const io = new Server(server, {
+    cors: {
+        origin: '*',
+     }
+    });
+
+
 // Tell the app to look for static files in these directories
-app.use(express.static('./build/'));
-app.use(express.static('./audios/'));
+app.use(express.static('../client/public/'));
+app.use(express.static('../audios/'));
+
+
+//cors middleware 
+app.use(cors());
 
 // Redirect to all routes not defined
+app.use(routes);
 
-app.get('/chatDirector', function(req, res) {
-  console.log(__dirname);
-  res.sendFile(path.join(__dirname, '../build/index.html'), function(err) {
-    if (err) res.status(500).send(err)
-  })
-});
-app.get('/chatProjector', function(req, res) {
-  res.sendFile(path.join(__dirname, '../build/index.html'), function(err) {
-    if (err) res.status(500).send(err)
-  })
-});
-app.get('/chatActor', function(req, res) {
-  res.sendFile(path.join(__dirname, '../build/index.html'), function(err) {
-    if (err) res.status(500).send(err)
-  })
-});
-app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, '../build/index.html'), function(err) {
-    if (err) res.status(500).send(err)
-  })
-});
+/*
 // Set Port, hosting services will look for process.env.PORT
 app.set('port', 80);
 // Start the server
 app.listen(app.get('port'), () => {
 	console.log('start server 80');
 });
+*/
+
+//setting up port
+const PORT = process.env.PORT || 8000;
+
+server.listen(PORT, () => {
+console.log(`Server running on ${PORT}`); 
+});
 
 var objTheaterPlay;
-fs.readFile('./guion_CAT.json', 'utf8', function (err, data) {
+fs.readFile('../guion_CAT.json', 'utf8', function (err, data) {
   if (err) throw err;
   objTheaterPlay = JSON.parse(data);
   console.log(objTheaterPlay[0].titulo);
@@ -63,8 +81,7 @@ var blockNewMessages = false;
 var csvSounds = [];
 var totalSampleAudios = 70;
 
-// Setup websockets
-var io = require('socket.io')({ port:8001,wsEngine: 'ws' });//8081
+
 // Setup message cue
 var timer = setInterval(function(){
   if(messageCue.length>0){
@@ -341,5 +358,5 @@ io.on('connection', function (socket) {
   });
 });
 
-io.listen(8001);
-loadCSV('./audios/CLAIR_DE_LUNE_TIEMPOS004_reduce.csv');
+//io.listen(8001);
+loadCSV('../audios/CLAIR_DE_LUNE_TIEMPOS004_reduce.csv');
