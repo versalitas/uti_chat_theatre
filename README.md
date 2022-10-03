@@ -28,7 +28,6 @@ run frontend from terminal inside
 uti_chat_theatre folder
 
 ````
-
 npm run build
 ```
 run backend from terminal inside
