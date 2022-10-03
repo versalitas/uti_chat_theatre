@@ -2,6 +2,10 @@
 
 Theatrical chat made with node.js, react and sockets.io
 
+Main contains original.
+
+uti_dev refactoring intent.
+
 
 Clone project from github.
 
