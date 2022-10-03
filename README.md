@@ -38,6 +38,18 @@ uti_chat_theatre folder
 sudo node server/app.js
 ```
 
+User connects from
+whatever_your_ip_is
+
+Show is displayed 
+whatever_your_ip_is/chatProjector
+
+Director monitors from
+whatever_your_ip_is/chatDirector
+
+
+
+
 
 
 
