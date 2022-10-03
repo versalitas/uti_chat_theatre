@@ -19,10 +19,29 @@ Install node modules
   npm install
   ```
 
+### main:
+
 Change ip setting in public/src/settings.js
 to the ip of your computer.
 
-Currently this project runs locally.
+run frontend from terminal inside
+uti_chat_theatre folder
+
+````
+
+npm run build
+```
+run backend from terminal inside
+uti_chat_theatre folder
+
+```
+sudo node server/app.js
+```
+
+
+
+
+
 
 ## TODO
 
