@@ -1,0 +1,26 @@
+#chat {
+  background: #ffffff;
+  height: 580px;
+  height-max: 800px;
+  width: 800px; }
+  #chat ul, #chat li {
+    list-style-type: none;
+    padding-left: 0; }
+  #chat ul {
+    padding: 0.35em 0.35em; }
+    #chat ul li {
+      padding-top: 0.1em;
+      padding-bottom: 0.1em; }
+  #chat .from {
+    line-height: 2em;
+    font-size: 0.85em; }
+    #chat .from span:first-of-type {
+      background: #c3fa9d;
+      color: black;
+      font-weight: bold;
+      border-radius: 2px;
+      padding: 0.2em 0.2em;
+      font-size: 1.25em; }
+  #chat .message {
+    padding-top: 0.2em;
+    padding-bottom: 0.3em; }

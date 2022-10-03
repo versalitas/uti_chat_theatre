@@ -1,0 +1,101 @@
+body {
+  margin: 0 0;
+  background-color: black; }
+
+#chatProjector {
+  background-color: #d2d2d2;
+  transition: opacity .6s; }
+  #chatProjector header {
+    background: #d0d0d0;
+    color: blue;
+    font-size: 2.2em;
+    font-weight: normal;
+    padding: 0.5em 0.5em;
+    height: 220px; }
+  #chatProjector .view {
+    display: flex;
+    flex-wrap: wrap; }
+    #chatProjector .view #chat {
+      flex-direction: column;
+      align-items: flex-start;
+      flex-grow: 1;
+      height: 800px; }
+      #chatProjector .view #chat ul {
+        margin: 0 0;
+        height: 780px;
+        max-height: 780px;
+        overflow-y: scroll;
+        font-size: 1.8em; }
+    #chatProjector .view #users {
+      flex-direction: column;
+      align-items: flex-start;
+      width: 350px;
+      max-width: 350px;
+      overflow: hidden;
+      height: 800px; }
+      #chatProjector .view #users li {
+        font-size: 1.8em; }
+  #chatProjector .input form.input {
+    display: flex;
+    align-self: flex-end; }
+    #chatProjector .input form.input button, #chatProjector .input form.input label {
+      font-family: sans-serif; }
+    #chatProjector .input form.input button {
+      align-self: center;
+      padding: 0.75rem 1.7rem;
+      font-size: 0.9em;
+      font-weight: bold;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 1px;
+      background: #98e47c;
+      color: #242424;
+      cursor: pointer; }
+    #chatProjector .input form.input label {
+      align-self: center;
+      padding: 0.75rem 0.75rem;
+      background: #f1f1f1;
+      color: #222222;
+      text-transform: uppercase;
+      font-size: 0.9em;
+      font-weight: normal;
+      cursor: pointer; }
+    #chatProjector .input form.input input {
+      flex-grow: 1;
+      padding: 1em 0.5em;
+      background: #fafafa;
+      border: none; }
+
+body {
+  font-size: 18px; }
+  body *:focus {
+    outline: none; }
+
+.modal-segment {
+  text-align: center;
+  font-family: sans-serif;
+  padding: 1em 1em;
+  box-shadow: 1.4px 1.35px 1.3px rgba(0, 0, 0, 0.7); }
+  .modal-segment *:focus {
+    outline: none; }
+  .modal-segment button {
+    padding: 0.7em 1.5em;
+    border: none;
+    border-radius: 2px;
+    background-color: #a6eeb3;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer; }
+  .modal-segment input[type='text'] {
+    margin-bottom: 0.75em; }
+  .modal-segment .last-details {
+    font-size: 0.6em;
+    text-transform: uppercase; }
+  .modal-segment label {
+    padding-right: 0.25em;
+    font-size: 0.65em;
+    font-weight: bold;
+    text-transform: uppercase; }
+  .modal-segment h2 {
+    margin: 0 0 0.7em 0;
+    text-transform: uppercase; }
